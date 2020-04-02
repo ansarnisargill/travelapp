@@ -1,0 +1,19 @@
+I need to create trip. Let say to start that it should include that type of data :
+
+- Travelers
+   § First name
+   § Age
+   § Mail adress
+- Day by day
+   § Destination
+□ Name
+□ Pictures
+  § Activities
+□ Name
+□ Beginning hour
+□ End time
+□ Type of activity
+  § Accommodation
+□ Price
+□ Pictures
+□ name

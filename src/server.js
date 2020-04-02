@@ -1,17 +1,20 @@
 import sirv from 'sirv';
-import polka from 'polka';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
-
-const { PORT, NODE_ENV } = process.env;
-const dev = NODE_ENV === 'development';
-
-polka() // You can also use Express
-	.use(
-		compression({ threshold: 0 }),
-		sirv('static', { dev }),
-		sapper.middleware()
-	)
-	.listen(PORT, err => {
-		if (err) console.log('error', err);
-	});
+const dev = 'development';
+const express = require('express');
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+const app = express();
+const port = process.env.PORT || 3000;
+const routes = require('./customRoutes');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload());
+app.use(routes);
+app.use(compression({ threshold: 0 }));
+app.use(sirv('static', { dev }));
+app.use(sapper.middleware());
+app.listen(port, () => {
+    console.log(`Server started on port ${server.address().port} :)`);
+});
