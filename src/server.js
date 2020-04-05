@@ -16,5 +16,5 @@ app.use(compression({ threshold: 0 }));
 app.use(sirv('static', { dev }));
 app.use(sapper.middleware());
 app.listen(port, () => {
-    console.log(`Server started on port ${server.address().port} :)`);
+    console.log(`Server started on port ${port} :)`);
 });
