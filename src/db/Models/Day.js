@@ -1,15 +1,19 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  date: {
-    type: Date,
-    required: [true, 'Date is required']
-  },
-  password: {
-    type: String,
-    required: [true, 'Created date is required']
-  }
+const daySchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'name is required']
+    },
+    description: {
+        type: String,
+        required: [true, 'description is required']
+    },
+    clientDescription: {
+        type: String,
+        required: [true, 'client description is required']
+    }
 });
-let Day = mongoose.model('Day', userSchema);
+let Day = mongoose.model('Day', daySchema);
 
 module.exports = Day;

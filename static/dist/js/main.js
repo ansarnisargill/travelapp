@@ -62,10 +62,6 @@ $(function() {
 
         // locate href
         // if there is no submenu
-        var href = $(this).attr('href');
-        if(href){
-            window.location.href = href;
-        }
 
         // Open submenu
         var $this = $(e.target), $active;

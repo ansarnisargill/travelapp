@@ -1,16 +1,26 @@
 const Day = require('../Models/Day');
-async function SaveUser(username, password) {
-    let user = new Day({
-        username: username,
-        password: password
+async function SaveDay(day) {
+    let obj = new Day({
+        name: day.name,
+        description: day.description,
+        clientDescription: day.client
     });
- await user.save();
+    await obj.save();
 }
-async function GetUser(username, password) {
-    let user = await User.findOne({ username: username, password: password }).exec();
-    return user;
+async function GetDay(id) {
+    let day = await Day.findOne({ _id: id }).exec();
+    return day;
+}
+async function GetAllDays() {
+    let days = await Day.find({}).exec();
+    return days;
+}
+async function DeleteDay(id) {
+    await Day.deleteOne({_id:id}).exec();
 }
 module.exports = {
-    SaveUser: SaveUser,
-    GetUser:GetUser
+    SaveDay,
+    GetDay,
+    GetAllDays,
+    DeleteDay
 };
