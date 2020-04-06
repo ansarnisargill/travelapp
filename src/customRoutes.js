@@ -20,8 +20,7 @@ router.post("/day", async (req, res) => {
 });
 router.get("/day", async (req, res) => {
     try {
-        let result=await dayService.GetAllDays();
-        console.log(result);
+        let result = await dayService.GetAllDays();
         res.send(result);
     }
     catch (err) {
@@ -38,8 +37,32 @@ router.delete("/day/:id", async (req, res) => {
     }
     catch (err) {
         console.log(err);
-                res.send({
-            status:false
+        res.send({
+            status: false
+        });
+    }
+});
+router.get("/day/:id", async (req, res) => {
+    try {
+        let result = await dayService.GetDay(req.params.id);
+        res.send(result);
+    }
+    catch (err) {
+        console.log(err);
+        res.send({});
+    }
+});
+router.put("/day", async (req, res) => {
+    try {
+        await dayService.UpdateDay(req.body);
+        res.send({
+            status: true
+        });
+    }
+    catch (err) {
+        console.log(err);
+        res.send({
+            status: true
         });
     }
 });

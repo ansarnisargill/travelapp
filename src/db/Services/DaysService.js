@@ -16,11 +16,22 @@ async function GetAllDays() {
     return days;
 }
 async function DeleteDay(id) {
-    await Day.deleteOne({_id:id}).exec();
+    await Day.deleteOne({ _id: id }).exec();
+}
+async function UpdateDay(day) {
+    let obj = {
+        name: day.name,
+        description: day.description,
+        clientDescription: day.client
+    };
+    const filter = { _id: day._id };
+    let r = await Day.findOneAndUpdate(filter, obj);
+    console.log(r);
 }
 module.exports = {
     SaveDay,
     GetDay,
     GetAllDays,
-    DeleteDay
+    DeleteDay,
+    UpdateDay
 };
